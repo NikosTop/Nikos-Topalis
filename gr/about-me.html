@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="el" translate="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Νικόλαος Τοπάλης</title>
+    <style>
+    /* Hide page until we start opening doors */
+    html.is-loading body { visibility: hidden; }
+
+    /* Loader always visible immediately */
+    #site-loader{ visibility: visible; opacity: 1; }
+
+    /* Hide diagonal + text until angle is set (prevents the middle frame) */
+    html.is-loading:not(.loader-ready) #site-loader .loader-diag,
+    html.is-loading:not(.loader-ready) #site-loader .loader-copy{
+        opacity: 0 !important;
+    }
+    </style>
+
+    <script>
+        // Always start at top on refresh / reload
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.addEventListener('beforeunload', function () {
+            window.scrollTo(0, 0);
+        });
+        window.addEventListener('load', function () {
+            window.scrollTo(0, 0);
+        });
+        // Handles back/forward cache in some browsers
+        window.addEventListener('pageshow', function (e) {
+            if (e.persisted) window.scrollTo(0, 0);
+        });
+    </script>
+    <meta name="google" content="notranslate">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../style-about.css" type="text/css">
+    <link rel="stylesheet" href="../style-header.css" type="text/css">
+</head>
+
+<body class="about-is-entering">
+
+    <header class="header-main">
+            <div class="header-bg"></div>
+
+            <nav class="header-main-nav">
+                <button class="openMenu" type="button" aria-expanded="false" aria-controls="mainMenuOverlay">Menu</button>
+
+                <div class="mainMenu" id="mainMenuOverlay" aria-hidden="true">
+                    <div class="mainMenu-top">
+                        <a href="../gr/index.html" class="mainMenu-brand" data-close-menu>
+                            <span class="first-name">Νικόλαος</span>
+                            <span class="second-name">Τοπάλης</span>
+                        </a>
+
+                        <button class="closeMenu" type="button" aria-label="Close menu">Κλείσιμο</button>
+                    </div>
+
+                    <div class="mainMenu-center">
+                        <ul class="mainMenu-links">
+                            <li><a href="../gr/index.html?from=about">Index</a></li>
+                            <li><a href="../gr/about-me.html" class="is-current" aria-current="page">About</a></li>
+                            <li><a href="../gr/index.html?from=about&scroll=portfolio">Portfolio</a></li>
+                        </ul>
+
+                        <div class="mainMenu-divider"></div>
+
+                        <div class="mainMenu-meta">
+                            <div class="mainMenu-meta-col">
+                                <p class="mainMenu-label">Λογαριασμοί</p>
+                                <div class="mainMenu-inline">
+                                    <a href="https://www.instagram.com/nickflowmedia/" target="_blank" rel="noopener">Instagram</a>
+                                    <a href="https://www.tiktok.com/@nickflowmedia" target="_blank" rel="noopener">TikTok</a>
+                                    <a href="https://www.youtube.com/@Nickflowmedia" target="_blank" rel="noopener">YouTube</a>
+                                    <a href="https://www.linkedin.com/in/nikolaos-topalis" target="_blank" rel="noopener">LinkedIn</a>
+                                </div>
+                            </div>
+
+                            <div class="mainMenu-meta-col">
+                                <p class="mainMenu-label">Επικοινωνήστε Μέσω</p>
+                                <div class="mainMenu-inline">
+                                    <a href="https://wa.me/306976742485?text=Hello%20I%20am%20interested%20in%20your%20services">WhatsApp</a>
+                                    <a href="mailto:nikos.topalis@hotmail.com">Email</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mainMenu-bottom">
+                        <a href="mailto:nikos.topalis@hotmail.com" class="mainMenu-talk">Let's Talk!</a>
+
+                        <div class="mainMenu-flags">
+                            <a href="gr/about-me.html" class="flag-link flag-link--gr is-current" aria-label="Greek version current page">
+                                <span class="flag-circle">🇬🇷</span>
+                            </a>
+                            <a href="../about-me.html" class="flag-link flag-link--us" aria-label="English version">
+                                <span class="flag-circle">🇺🇸</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="header-main-contact">
+                <a href="mailto:nikos.topalis@hotmail.com">Let's Talk!</a>
+            </div>
+
+            <div class="desktop-flag-nav">
+                <div class="header-main-logo desktop-lang">
+                    <a href="../about-me.html" class="lang-link">EN</a>
+                    <span class="lang-separator">/</span>
+                    <a href="../gr/about-me.html" class="lang-link is-current" aria-current="page">GR</a>
+                </div>
+            </div>
+
+    </header>
+
+    <main class="about-page">
+        <section class="about-hero-3d">
+            <canvas id="webgl-canvas-base" aria-hidden="true"></canvas>
+            <canvas id="webgl-canvas-text-sharp" aria-hidden="true"></canvas>
+            <canvas id="webgl-canvas-text-blur" aria-hidden="true"></canvas>
+
+            <div class="about-overlay">
+                <div class="scroll-space" aria-hidden="true"></div>
+            </div>
+            <a href="mailto:nikos.topalis@hotmail.com" class="contact-planet">
+                <div class="cp-scene">
+
+                    <div class="cp-ring cp-ring--orbit">
+                        <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                            <defs>
+                                <path
+                                id="orbitPath"
+                                d="M 200,200 m -145,0 a 145,145 0 1,1 290,0 a 145,145 0 1,1 -290,0"
+                                />
+                            </defs>
+
+                            <text class="cp-text">
+                                <textPath href="#orbitPath" startOffset="0%">
+                                Η ΑΝΑΠΤΥΞΗ ΞΕΚΙΝΑ ΕΔΩ • ΕΠΙΚΟΙΝΩΝΗΣΕ • Η ΑΝΑΠΤΥΞΗ ΞΕΚΙΝΑ ΕΔΩ • ΕΠΙΚΟΙΝΩΝΗΣΕ •
+                                </textPath>
+                            </text>
+                        </svg>
+                    </div>
+
+                    <div class="cp-planet"></div>
+                </div>
+            </a>
+        </section>
+    </main>
+
+    <script type="module" src="../main-about.js"></script>
+</body>
+
+</html>

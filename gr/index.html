@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="el" translate="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Νικόλαος Τοπάλης</title>
+    <style>
+    /* Hide page until we start opening doors */
+    html.is-loading body { visibility: hidden; }
+
+    /* Loader always visible immediately */
+    #site-loader{ visibility: visible; opacity: 1; }
+
+    /* Hide diagonal + text until angle is set (prevents the middle frame) */
+    html.is-loading:not(.loader-ready) #site-loader .loader-diag,
+    html.is-loading:not(.loader-ready) #site-loader .loader-copy{
+        opacity: 0 !important;
+    }
+    </style>
+    
+    <script>
+        (function () {
+            const params = new URLSearchParams(window.location.search);
+            const shouldSkipLoader = params.get('skipLoader') === '1';
+
+            if (shouldSkipLoader) return;
+
+            document.documentElement.classList.add('is-loading');
+
+            var w = window.innerWidth || 1;
+            var h = window.innerHeight || 1;
+            var ang = Math.atan2(h, w);
+            document.documentElement.style.setProperty('--diag-angle', ang + 'rad');
+
+            document.documentElement.classList.add('loader-ready');
+        })();
+    </script>
+
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+
+        function resetScrollerToTop() {
+            const scroller = document.getElementById('page');
+            if (scroller) {
+                scroller.scrollTo({ top: 0, behavior: 'auto' });
+            } else {
+                window.scrollTo(0, 0);
+            }
+        }
+
+        window.addEventListener('load', function () {
+            resetScrollerToTop();
+        });
+
+        window.addEventListener('pageshow', function (e) {
+            if (e.persisted) resetScrollerToTop();
+        });
+    </script>
+    <meta name="google" content="notranslate">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=TikTok+Sans:opsz,wght@12..36,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../style.css" type="text/css">
+    <link rel="stylesheet" href="../style-header.css" type="text/css">
+    <link rel="preload" as="image" href="../Hero-Image.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="../Timeline.jpg">
+</head>
+
+<body>
+    <div id="site-loader" class="loader">
+        <!-- two diagonal halves -->
+        <div class="loader-panel loader-panel--top"></div>
+        <div class="loader-panel loader-panel--bottom"></div>
+
+        <!-- diagonal bar -->
+        <div class="loader-diag" aria-hidden="true">
+            <div class="loader-diag__track"></div>
+            <div class="loader-diag__progress" id="loaderProgress"></div>
+        </div>
+
+        <!-- bottom-left text -->
+        <div class="loader-copy">
+            <div class="loader-wait">WAIT<span class="dots"><span>.</span><span>.</span><span>.</span></span></div>
+            <div class="loader-magic">NIKOLAOS TOPALIS</div>
+        </div>
+    </div>
+    <div id="page">
+        <!-- HERO LOOP UNDERLAY (desktop only) -->
+        <div class="hero-loop-underlay" aria-hidden="true">
+            <div class="hero-loop-bg"></div>
+
+            <div class="hero-loop-media">
+                <!-- use the SAME image as your .hero-media img -->
+                <img src="../Hero-Image.webp" alt="">
+            </div>
+
+            <div class="hero-loop-content"></div>
+        </div>
+        <!-- RESULTS SCROLL LIGHTING -->
+        <div class="results-glow"></div>
+        <div class="results-darkfade"></div>
+    <!-- <canvas id="grain-canvas"></canvas> -->
+        <header class="header-main">
+            <div class="header-bg"></div>
+
+            <nav class="header-main-nav">
+                <button class="openMenu" type="button" aria-expanded="false" aria-controls="mainMenuOverlay">Menu</button>
+
+                <div class="mainMenu" id="mainMenuOverlay" aria-hidden="true">
+                    <div class="mainMenu-top">
+                        <a href="gr/index.html" class="mainMenu-brand" data-close-menu>
+                            <span class="first-name">Νικόλαος</span>
+                            <span class="second-name">Τοπάλης</span>
+                        </a>
+
+                        <button class="closeMenu" type="button" aria-label="Close menu">Κλείσιμο</button>
+                    </div>
+
+                    <div class="mainMenu-center">
+                        <ul class="mainMenu-links">
+                            <li><a href="gr/index.html" class="is-current" aria-current="page">Index</a></li>
+                            <li><a href="../gr/about-me.html">About</a></li>
+                            <li><a href="#portfolio">Portfolio</a></li>
+                        </ul>
+
+                        <div class="mainMenu-divider"></div>
+
+                        <div class="mainMenu-meta">
+                            <div class="mainMenu-meta-col">
+                                <p class="mainMenu-label">Λογαριασμοί</p>
+                                <div class="mainMenu-inline">
+                                    <a href="https://www.instagram.com/nickflowmedia/" target="_blank" rel="noopener">Instagram</a>
+                                    <a href="https://www.tiktok.com/@nickflowmedia" target="_blank" rel="noopener">TikTok</a>
+                                    <a href="https://www.youtube.com/@Nickflowmedia" target="_blank" rel="noopener">YouTube</a>
+                                    <a href="https://www.linkedin.com/in/nikolaos-topalis" target="_blank" rel="noopener">LinkedIn</a>
+                                </div>
+                            </div>
+
+                            <div class="mainMenu-meta-col">
+                                <p class="mainMenu-label">Επικοινωνήστε Μέσω</p>
+                                <div class="mainMenu-inline">
+                                    <a href="https://wa.me/306976742485?text=Hello%20I%20am%20interested%20in%20your%20services">WhatsApp</a>
+                                    <a href="mailto:nikos.topalis@hotmail.com">Email</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mainMenu-bottom">
+                        <a href="mailto:nikos.topalis@hotmail.com" class="mainMenu-talk">Let's Talk!</a>
+
+                        <div class="mainMenu-flags">
+                            <a href="../gr/index.html" class="flag-link flag-link--gr is-current" aria-label="Greek version current page">
+                                <span class="flag-circle">🇬🇷</span>
+                            </a>
+                            <a href="../index.html" class="flag-link flag-link--us" aria-label="English version">
+                                <span class="flag-circle">🇺🇸</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="header-main-contact">
+                <a href="mailto:nikos.topalis@hotmail.com">Let's Talk!</a>
+            </div>
+
+            <div class="desktop-flag-nav">
+                <div class="header-main-logo desktop-lang">
+                    <a href="../index.html" class="lang-link">EN</a>
+                    <span class="lang-separator">/</span>
+                    <a href="../gr/index.html" class="lang-link is-current" aria-current="page">GR</a>
+                </div>
+            </div>
+
+        </header>
+
+        <main>
+                <section class="hero">
+                    <div class="hero-bg">
+                        <div class="hero-bg-visual"></div>
+                        <div class="hero-bg-intro"></div>
+                    </div> 
+                    
+                    <div class="hero-media">
+                        <div class="hero-media-zoom">
+                            <img src="../Hero-Image.webp" class="hero-image" alt="Nikolaos">
+                        </div>
+                    </div>
+                    
+                    <div class="hero-container">
+                        <div class="hero-text-left">
+                            <div class="hero-name-wrapper">
+                                <p class="hero-greating">Χαίρετε, είμαι ο</p>
+                                <p class="hero-name"></p>
+                                    <span class="first-name">Νικόλαος</span>
+                                    <span class="second-name">Τοπάλης</span>
+                            </div>
+                            <p class="hero-content" translate="no">ΥΛΙΚΟ<br>ΠΟΥ ΑΠΟΔΙΔΕΙ</p>
+                            <div class="cube-wrapper" aria-label="Rotating keywords">
+                                <div class="cube-stage">
+                                    <div class="cube" id="keywordCube">
+                                        <div class="cube-face cube-face--front">ΑΞΙΟΠΙΣΤΙΑ</div>
+                                        <div class="cube-face cube-face--bottom">ΑΠΗΧΗΣΗ</div>
+                                        <div class="cube-face cube-face--back">ΑΝΑΠΤΥΞΗ</div>
+                                        <div class="cube-face cube-face--top">ΑΙ-ΕΡΓΑΛΕΙΑ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="scroll-indicator">
+                                <span>(Κύλιση κάτω</span>
+                                <img src="../computer-mouse.svg" alt="Scroll down">)
+                            </div>
+                        </div>
+
+                        <div class="hero-mid-callout" aria-label="Value proposition">
+                            <div class="hero-mid-line" aria-hidden="true"></div>
+
+                                <p class="hero-mid-text">
+                                    <span class="hero-mid-text-item">Δημιουργία Βίντεο</span>
+                                    <span class="hero-mid-text-item">Βελτιστοποίηση Περιεχομένου</span>
+                                    <span class="hero-mid-text-item">Στρατηγικές Μέσων Δικτύωσης</span>
+                                </p>
+
+                            <div class="hero-mid-line" aria-hidden="true"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-corner">
+                        <div class="hero-divider"></div>
+                        <a href="mailto:nikos.topalis@hotmail.com" class="hero-side-btn hero-side-btn--c">
+                           •Δωρεάν Δείγμα•
+                        </a>
+
+                        <div class="hero-nav hero-social" aria-label="Social links">
+                            <a class="social-link" href="https://www.instagram.com/nickflowmedia/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a class="social-link" href="https://www.tiktok.com/@nickflowmedia" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                            <a class="social-link" href="https://www.youtube.com/@Nickflowmedia" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                            <a class="social-link" href="https://www.linkedin.com/in/nikolaos-topalis" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        </div>
+                        <a href="mailto:nikos.topalis@hotmail.com" class="mobile-email-arrow">
+                            <svg class="arrow-svg" viewBox="0 0 24 24">
+                                <path d="M5 19L19 5M19 5H9M19 5V15"/>
+                            </svg>
+                        </a>
+                    </div>
+                </section>
+                    <section class="services-section">
+
+                        <h2 class="services-title">ΥΠΗΡΕΣΙΕΣ</h2>
+
+                        <div class="services-image-wrapper">
+
+                            <img src="../Timeline.jpg" class="services-bg" alt="Services timeline background">
+
+                            <div class="services-overlay">
+
+                                <div class="services-list">
+                                    <div class="services-line" aria-hidden="true"></div>
+                                    <div class="service-item">
+                                        <div class="service-dot"></div>
+                                        <h3>Μοντάζ Βίντεο</h3>
+                                        <p>Reels, TikTok, Meta & Shorts σχεδιασμένα για να κρατούν το κοινό.</p>
+                                    </div>
+
+                                    <div class="service-item">
+                                        <div class="service-dot"></div>
+                                        <h3>Στρατηγική Hook</h3>
+                                        <p>Εντυπωσιακές τεχνικές που κερδίζουν αμέσως την προσοχή των θεατών.</p>
+                                    </div>
+
+                                    <div class="service-item">
+                                        <div class="service-dot"></div>
+                                        <h3>Συμβουλευτική Περιεχομένου</h3>
+                                        <p>Λεζάντες, χρόνος δημοσίευσης, ετικέτες και συμβουλές βελτιστοποίησης για επιτυχία.</p>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <section class="banner" id="portfolio">
+                    </section>
+
+                    <section class="video-slider-section">
+
+                        <h2 class="video-title">SHOWREEL</h2>
+
+                        <div class="slider-wrapper">
+
+                            <div class="slider">
+                                <div class="slide-track">
+
+                                    <!-- YOUR 8 VIDEOS (same as before) -->
+
+                                    <div class="slide">
+                                      <div class="yt" data-id="fZxR-JGsgPM" aria-label="Play video"></div>
+                                    </div>
+
+                                    <div class="slide">
+                                      <div class="yt" data-id="vEJ5SkeyoDA" aria-label="Play video"></div>
+                                    </div>
+
+                                    <div class="slide">
+                                      <div class="yt" data-id="4zbUqIgRufA" aria-label="Play video"></div>
+                                    </div>
+
+                                    <div class="slide">
+                                      <div class="yt" data-id="9Jc4ncYpz88" aria-label="Play video"></div>
+                                    </div>
+
+                                    <div class="slide">
+                                      <div class="yt" data-id="vhd--wP2nuQ" aria-label="Play video"></div>
+                                    </div>
+
+                                    <div class="slide">
+                                      <div class="yt" data-id="y5ooLYt10NY" aria-label="Play video"></div>
+                                    </div>
+
+                                    <div class="slide">
+                                      <div class="yt" data-id="gtnLn2cFgWc" aria-label="Play video"></div>
+                                    </div>
+
+                                    <div class="slide">
+                                      <div class="yt" data-id="jmVL6E84r5U" aria-label="Play video"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="slider-hint is-hidden" aria-hidden="true">
+                              <div class="swipe-icon">
+                                <svg viewBox="0 0 64 64" class="swipe-svg" role="img" aria-label="Swipe">
+                                  <!-- left-right arrows -->
+                                  <path class="swipe-arrows" d="M18 18 L10 24 L18 30 M46 18 L54 24 L46 30" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                  <path class="swipe-arrows" d="M10 24 H54" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                            
+                                  <!-- hand -->
+                                  <path class="swipe-hand" d="M30 44c0-2 0-12 0-14 0-2 1.5-3 3-3s3 1 3 3v7-12c0-2 1.5-3 3-3s3 1 3 3v12-10c0-2 1.5-3 3-3s3 1 3 3v14c0 6-4 10-10 10h-3c-4 0-8-2-9-6l-2-8c-.6-2.3 1-4.2 3.2-4.2 1.4 0 2.6.8 3 2l1.8 5"
+                                        fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                              </div>
+                              <div class="hint-text">Σύρετε</div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section class="ribbon-x-section">
+
+                        <div class="ribbon-glow"></div>
+
+                        <div class="ribbon-stage ribbon-stage-orange">
+                            <div class="ribbon ribbon-orange">
+                                <div class="ribbon-marquee">
+                                    <div class="ribbon-inner">
+                                        <div class="ribbon-item">
+                                            <span>E-COMMERCE GROWTH</span>
+                                            <span class="diamond">◆</span>
+                                            <span>SOCIAL MEDIA CONSULTING</span>
+                                            <span class="diamond">◆</span>
+                                            <span>VIDEO CONTENT</span>
+                                            <span class="diamond">◆</span>
+                                            <span>PERFORMANCE EDITING</span>
+                                            <span class="diamond">◆</span>
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ribbon-stage ribbon-stage-black">
+                            <div class="ribbon ribbon-black">
+                                <div class="ribbon-marquee">
+                                    <div class="ribbon-inner">
+                                        <div class="ribbon-item">
+                                            <span>AI-POWERED WORKFLOWS</span>
+                                            <span class="diamond">◆</span>
+                                            <span>VISUAL STORYTELLING</span>
+                                            <span class="diamond">◆</span>
+                                            <span>WEBSITE DESIGNS</span>
+                                            <span class="diamond">◆</span>
+                                            <span>MARKETING SYSTEMS</span>
+                                            <span class="diamond">◆</span>
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+
+
+                    <section class="results-section">
+                        <h2 class="results-title">ΑΠΟΤΕΛΕΣΜΑΤΑ</h2>
+
+                        <div class="results-wrap">
+                            <div class="results-photo">
+                           
+                            <img src="../footer-img.webp" alt="Nick tablet">
+                            </div>
+
+                            <div class="results-panel" data-results>
+                                <div class="results-camera"></div>
+                                <div class="results-screen"></div>
+                                <div class="results-hint" aria-hidden="true">
+                                    <span class="hint-label">ΑΝΑΛΥΣΗ</span>
+                                    <span class="hint-pulse"></span>
+                                </div>
+
+                                <div class="results-grid results-grid--new">
+                                    <div class="stat" tabindex="0">
+                                    <div class="stat-overlay">ΠΡΟΒΟΛΗ</div>
+                                    <h2>+48%</h2>
+                                    <span>Ενίσχυση Διατήρησης Κοινού</span>
+                                    </div>
+
+                                    <div class="stat" tabindex="0">
+                                    <div class="stat-overlay">ΠΡΟΒΟΛΗ</div>
+                                    <h2>2x</h2>
+                                    <span>Αύξηση Χρόνου Προβολής</span>
+                                    </div>
+
+                                    <div class="stat" tabindex="0">
+                                    <div class="stat-overlay">ΠΡΟΒΟΛΗ</div>
+                                    <h2>+37%</h2>
+                                    <span>Αύξηση Αλληλεπίδρασης</span>
+                                    </div>
+
+                                    <div class="stat" tabindex="0">
+                                    <div class="stat-overlay">ΠΡΟΒΟΛΗ</div>
+                                    <h2>Μοτίβα Καθήλωσης</h2>
+                                    <span>Στρατηγικές Καθήλωσης Θεατή</span>
+                                    </div>
+
+                                    <div class="stat stat-wide" tabindex="0">
+                                        <div class="stat-overlay">ΠΡΟΒΟΛΗ</div>
+
+                                        <div class="results-cta-row">
+                                            <p class="results-cta-text">Μπορώ να βοηθήσω;</p>
+
+                                            <div class="results-contact-row">
+                                                <a class="results-contact-link" href="mailto:nikos.topalis@hotmail.com" aria-label="Email">
+                                                <i class="fa-solid fa-envelope"></i>
+                                                </a>
+
+                                                <a class="results-contact-link" href="https://wa.me/306976742485?text=Hello%20I%20am%20interested%20in%20your%20services" target="_blank" rel="noopener" aria-label="WhatsApp">
+                                                <i class="fa-brands fa-whatsapp"></i>
+                                                </a>
+
+                                                <a class="results-contact-link" href="https://t.me/nickflowmedia" target="_blank" rel="noopener" aria-label="Telegram">
+                                                <i class="fa-brands fa-telegram"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                            <!-- <button onclick="topFunction()" id="topBtn" title="Go to top"><i class='fas fa-chevron-up'></i></button> -->
+        </main>
+    </div>
+    
+    <script src="https://unpkg.com/gsap@3/dist/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+    <!-- LOCAL LENIS -->
+    <script src="../lenis.min.js" defer></script>
+
+    <script src="../smooth-scroll.js" defer></script>
+    <script src="../main.js" defer></script>
+</body>
+
+</html>

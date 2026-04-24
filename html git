@@ -1,0 +1,61 @@
+@media only screen and (max-device-width : 850px) and (orientation : landscape){
+
+    .name {
+        margin-bottom: 0px;
+    }
+    
+    .undername {
+        font-size: 1vw;
+    }
+    
+    .header-main-contact a {
+        margin-right: -37px;
+    }
+    
+    .fa-bars:before {
+        padding-left: 23px;
+    }
+}
+
+@media (orientation: landscape) and (max-width: 750px) {
+
+    .name {
+    font-size: 5.5vw;
+    font-weight: normal;
+    font-family: 'Josefin Sans', sans-serif;
+    letter-spacing: 8px;
+    margin-bottom: 0px;
+    position: relative;
+    }
+
+    .undername {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1vw;
+    line-height: 109%;
+    font-weight: 500;
+    margin-bottom: 30px;
+    }
+
+    .fa-bars:before {
+    font-size: 30px;
+    }
+
+    .header-main-contact a {
+    margin-right: -37px;
+    }
+
+    .skillspans {
+    font-size: 1.7vw;
+    }
+}
+
+@media (orientation: landscape) and (max-width: 600px){
+    
+    .header-main-contact a {
+    margin-right: -47px;
+    }
+
+    .undername {
+    font-size: 2vw;
+    }
+}
