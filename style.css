@@ -336,8 +336,8 @@ html.reveal-hero .hero .hero-bg-visual::after{
   pointer-events:none;
 }
 
-.service-item{
-  margin-bottom:calc(2.5vw + 2svh);
+.service-item {
+  margin-bottom:calc(1.5vw + 2svh);
   position:relative;
   transition:0.3s;
 }
@@ -369,7 +369,7 @@ html.reveal-hero .hero .hero-bg-visual::after{
   font-family:'Josefin Sans',sans-serif;
   font-size:1.5vw;
   color:#0e0e0e;
-  max-width:calc(18vw + 19svh);
+  max-width:30vw;
   line-height:1.5;
   filter: blur(10px); /* Services: blur ONLY the paragraph text (default state) */
   opacity: 0.9;
@@ -2028,12 +2028,12 @@ section.video-slider-section{
   }
 
   .service-item p {
-    max-width: calc(20vw + 25svh);
+    max-width: 36vw;
     font-size: 2.1vw;
   }
 
   .service-item {
-    margin-bottom: calc(1.5vw + 2svh);
+    margin-bottom: calc(1.5vw + 1svh);
   }
 
   .results-wrap{
@@ -2103,7 +2103,7 @@ section.video-slider-section{
   .service-item p{
     font-size: 2.25vw;
     line-height: 1.2;
-    max-width: calc(27vw + 25svh);
+    max-width: 39vw;
   }
 
   .results-title, .video-title, .services-title{
@@ -2115,7 +2115,7 @@ section.video-slider-section{
   }
 
   .service-item {
-    margin-bottom: calc(2vw + 1.5svh);
+    margin-bottom: calc(2vw + 0.5svh);
   }
 
   .hero-media {
@@ -2403,7 +2403,7 @@ section.video-slider-section{
   }
 
   .hero-nav.hero-social{
-    gap: calc(1vw + 2svh);
+    gap: calc(1vw + 1.8svh);
   }
 
   .hero-nav.hero-social .social-link {
@@ -2412,7 +2412,7 @@ section.video-slider-section{
   }
 
   .hero-nav.hero-social .social-link i{
-    font-size: 5vw;
+    font-size: 6.1vw;
   }
 
   .header-main-logo{
@@ -2570,7 +2570,7 @@ section.video-slider-section{
   } */
 
   .hero-content{
-    width: 100%;
+    width: 70%;
     font-size: calc(6vw + 5svh);
   }
 
