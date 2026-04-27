@@ -2024,12 +2024,12 @@ section.video-slider-section{
   }
 
   .service-item h3 {
-    font-size: 2.6vw;
+    font-size: 2.4vw;
   }
 
   .service-item p {
-    max-width: 36vw;
-    font-size: 1.9vw;
+    max-width: 38vw;
+    font-size: 1.85vw;
   }
 
   .service-item {
@@ -2093,7 +2093,7 @@ section.video-slider-section{
 @media only screen and (max-width: 768px) {
 
   .service-item h3{
-    font-size: 3vw;
+    font-size: 2.7vw;
   }
 
   .services-overlay{
@@ -2101,7 +2101,7 @@ section.video-slider-section{
   }
 
   .service-item p{
-    font-size: 2.25vw;
+    font-size: 2.1vw;
     line-height: 1.2;
     max-width: 39vw;
   }
