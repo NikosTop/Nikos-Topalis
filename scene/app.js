@@ -293,11 +293,11 @@ export async function initAboutScene() {
     starBoost *= 0.10;
     starBoost = Math.min(starBoost, 0.018);
 
-    stars.rotation.y += 0.00005 + starBoost;
-    stars.rotation.x += 0.00001 + starBoost * 0.13;
+    stars.rotation.y += 0.00012 + starBoost;
+    stars.rotation.x += 0.000025 + starBoost * 0.17;
 
     const t = (Math.sin(performance.now() * 0.00008) + 1) * 0.5;
-    baseScene.background.copy(bgA).lerp(bgB, t * 0.26);
+    baseScene.background.copy(bgA).lerp(bgB, t * 0.34);
     baseScene.fog.color.copy(baseScene.background);
 
     baseRenderer.render(baseScene, camera);

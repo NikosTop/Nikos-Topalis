@@ -383,7 +383,7 @@ if (isTouch && section && hint) {
   let x = 0;
   let paused = false;
 
-  const SPEED = 70;
+  const SPEED = 90;
   const MAX_DT = 0.05;
 
   function setX(v) {
