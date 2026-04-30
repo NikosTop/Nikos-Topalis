@@ -719,6 +719,8 @@ gsap.registerPlugin(ScrollTrigger);
 
   const heroImg = document.querySelector(".hero-media img");
   const loopImg = document.querySelector(".hero-loop-media img");
+  const resultsSection = document.querySelector(".results-section");
+  const resultsImg = document.querySelector(".results-photo img");
 
   const heroBgUrl = "hero-background.jpg";
 
@@ -753,11 +755,22 @@ gsap.registerPlugin(ScrollTrigger);
   function waitForImage(img) {
     return new Promise((resolve) => {
       if (!img) return resolve();
-      if (img.complete && img.naturalWidth > 0) return resolve();
 
-      const done = () => resolve();
+      const done = () => {
+        if (img.decode) {
+          img.decode().catch(() => {}).finally(resolve);
+        } else {
+          resolve();
+        }
+      };
+
+      if (img.complete && img.naturalWidth > 0) {
+        done();
+        return;
+      }
+
       img.addEventListener("load", done, { once: true });
-      img.addEventListener("error", done, { once: true });
+      img.addEventListener("error", resolve, { once: true });
     });
   }
 
@@ -779,6 +792,32 @@ gsap.registerPlugin(ScrollTrigger);
     return document.fonts.ready.catch(() => {});
   }
 
+  function warmResultsSection() {
+    return new Promise((resolve) => {
+      if (!resultsSection) return resolve();
+
+      const oldWillChange = resultsSection.style.willChange;
+      const oldTransform = resultsSection.style.transform;
+      const oldOpacity = resultsSection.style.opacity;
+
+      resultsSection.style.willChange = "transform, opacity";
+      resultsSection.style.transform = "translateZ(0)";
+      resultsSection.style.opacity = "0.999";
+
+      // force the browser to build the layers while the loader is still visible
+      resultsSection.getBoundingClientRect();
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          resultsSection.style.willChange = oldWillChange;
+          resultsSection.style.transform = oldTransform;
+          resultsSection.style.opacity = oldOpacity;
+          resolve();
+        });
+      });
+    });
+  }
+
   function minDelay(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
@@ -786,8 +825,10 @@ gsap.registerPlugin(ScrollTrigger);
   Promise.all([
     waitForImage(heroImg),
     waitForImage(loopImg),
+    waitForImage(resultsImg),
     preloadImage(heroBgUrl),
     waitForFonts(),
+    warmResultsSection(),
     minDelay(600) // keeps it from flashing too quickly on fast loads
   ]).then(finishLoader);
 
